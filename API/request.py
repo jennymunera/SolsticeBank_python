@@ -7,6 +7,7 @@ load_dotenv()
 #%%
 _PROJECT_PATH: str = os.environ["_project_path"]
 _CSV_DATA_FILENAME: str = os.environ["_csv_data_filename"]
+SOLSTICE_BANK: str = os.environ["solstice_bank"]
 #%%
 import sys
 from pathlib import Path
@@ -19,8 +20,8 @@ import time
 import json
 import pandas as pd
 
-import config_v2 as cfg
-from library_ubidots_v2 import Ubidots as ubi
+import API.config_v2 as cfg
+from API.library_ubidots_v2 import Ubidots as ubi
 
 # %%
 # set your constants here
@@ -28,7 +29,7 @@ baseline=cfg.BASELINE
 study=cfg.STUDY
 
 # %%
-df_devices = ubi.get_available_devices_v2(label='bancolombia', level='group', page_size=1000)
+df_devices = ubi.get_available_devices_v2(label=SOLSTICE_BANK, level='group', page_size=1000)
 
 #%%
 df_devices = df_devices[df_devices['device_label'].isin(['bc49','bc-291-las-palmas','bc37','bc38'])]
@@ -77,4 +78,6 @@ df = ubi.parse_response(lst_responses, VAR_ID_TO_LABEL)
 # %%
 len(response.json()['results'][0][0])
 
+
+# %%
 df.to_csv(f"{_CSV_DATA_FILENAME}", index=False)
