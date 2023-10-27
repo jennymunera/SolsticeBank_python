@@ -76,8 +76,8 @@ df = ubi.parse_response(lst_responses, VAR_ID_TO_LABEL)
 
 
 # %%
-len(response.json()['results'][0][0])
+#len(response.json()['results'][0][0])
 
 
 # %%
-df.to_csv(f"{_CSV_DATA_FILENAME}", index=False)
+#df.to_csv(f"{_CSV_DATA_FILENAME}", index=False)
