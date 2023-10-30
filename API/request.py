@@ -14,7 +14,10 @@ load_dotenv()
 LST_VAR = [
     "ilu-consumo-activa",
     "aa-consumo-activa",
-    "front-consumo-activa"]
+    "front-consumo-activa",
+    "front-tension-3",
+    "front-tension-2",
+    "front-tension-1"]
 
 LST_DVC = ['bc49','bc-291-las-palmas','bc37','bc38']
     
@@ -40,7 +43,7 @@ def request(Time, LST_VAR, LST_DVC):
 
     df = ubi.parse_response(lst_responses, VAR_ID_TO_LABEL)
 
-    # df.to_csv('datos.csv')
+    df.to_csv('API/datos.csv')
 
     return df
 
