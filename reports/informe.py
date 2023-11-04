@@ -106,6 +106,7 @@ def makegraphs_informe(df_baseline, df, page):
 
         st.write(f"El error cuadrático medio del modelo es de {MSE:.2f} kWh/día")
         front_st_pred['value_pred'] = model.predict(front_st_pred[['hour', 'cont_dow']])
+        ## TODO: add a graph showing predictions vs actual consumption
         front_st_pred['Periodo'] = 'Predicción'
         front_st_pred_daily = front_st_pred.groupby(by=["variable"]).resample('1D').sum().reset_index().set_index('datetime')
         front_st_pred_daily = datetime_attributes(front_st_pred_daily)
