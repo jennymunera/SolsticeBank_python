@@ -83,6 +83,15 @@ def makegraphs_Mayales(df):
 
         with graph3:
             fig_hist = px.histogram(df_Mayales_front, x='value', nbins=12, title="Histograma de potencia activa (kW)")
+            fig_hist.update_layout(
+                xaxis_title="Potencia activa (kW)",
+                yaxis_title="Frecuencia",
+                title={
+                    'text': "Histograma de potencia activa (kW) - Aire acondicionado",
+                    'y':0.9,
+                    'x':0.5,
+                    'xanchor': 'center',
+                    'yanchor': 'top'})
             st.plotly_chart(fig_hist,use_container_width=True)
 
         with graph4:
